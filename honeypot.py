@@ -1,28 +1,22 @@
 #!/bin/python
 
-import socket, select, smtplib, base64, subprocess
-#import sniffer
-#import filemon
+import socket, select, smtplib, subprocess
 subprocess.Popen(["python", "sniffer.py"])
 subprocess.Popen(["python", "filemon.py"])
 
 def server():
 	import sys, os, socket
 
-from email.MIMEMultipart import MIMEMultipart
-from email.mime.text import MIMEText
-
 port_http = 80
 port_smtps = 465
 port_https = 443
 port_ftp = 21
 port_mysql = 3306
-#port_mssql = 1433
 port_http_n = 8080
 port_http_ns = 8443
 
-m_from = 'fw2 <root@fw2.beehosting.pro>'
-m_to = 'Juri <juri@itsupport.ee>'
+m_from = 'fw2 <root@honeypot.local.lan>'
+m_to = 'Admin <admin@localhost.lan'
 
 sock_lst = []
 host = ''
@@ -50,12 +44,6 @@ while True:
 			if r == item:
 				accepted_socket, adress = item.accept()
 
-				#print 'We have a connection with ', adress
-				#msg = MIMEMultipart()
-				#msg['Subject'] = 'New connection to fw2!'
-				#msg['From'] = m_from
-				#msg['To'] = m_to
-				#msg.attach(adress)
 				msg = """Subject: Hacked!
 
 				New connection from to fw2!

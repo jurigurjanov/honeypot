@@ -1,17 +1,14 @@
 #!/bin/python
 
-import os, time, smtplib, base64
-from email import encoders
-from email.mime.application import MIMEApplication
+import os, time, smtplib
 from email.MIMEMultipart import MIMEMultipart
 from email.mime.text import MIMEText
-from email.mime.base import MIMEBase
 
 sniff_file = 'sniff_data.txt'
 cached_stamp = os.stat(sniff_file).st_mtime
 
-from_addr = 'fw2 <root@fw2.beehosting.pro>'
-to_addr = 'Juri <juri@itsupport.ee>'
+m_from = 'fw2 <root@honeypot.local.lan>'
+m_to = 'Admin <admin@localhost.lan'
 body = 'Check attach for logs'
 subject = 'Got scanned!'
 
@@ -20,8 +17,8 @@ while True:
 	if stamp != cached_stamp:
 	        cached_stamp = stamp
 		msg = MIMEMultipart()
-		msg['From'] = from_addr
-		msg['To'] = to_addr
+		msg['From'] = m_from
+		msg['To'] = m_to
 		msg['Subject'] = subject
 		msg.attach(MIMEText(body))
 
@@ -31,5 +28,5 @@ while True:
 		msg.attach(att_msg)
 
 		smtpObj = smtplib.SMTP('localhost')
-		smtpObj.sendmail(from_addr, to_addr, msg.as_string())
+		smtpObj.sendmail(m_from, m_to, msg.as_string())
 	time.sleep(10)
