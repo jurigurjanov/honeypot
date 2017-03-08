@@ -7,10 +7,14 @@ from email.mime.text import MIMEText
 sniff_file = 'sniff_data.txt'
 cached_stamp = os.stat(sniff_file).st_mtime
 
+### vars to change
+
 m_from = 'fw2 <root@honeypot.local.lan>'
 m_to = 'Admin <admin@localhost.lan'
 body = 'Check attach for logs'
 subject = 'Got scanned!'
+
+### /vars to change
 
 while True:
 	stamp = os.stat(sniff_file).st_mtime

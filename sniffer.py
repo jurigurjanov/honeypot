@@ -6,10 +6,15 @@
 import socket, sys
 from struct import *
 
+### vars to change
+
 loc_mac = "00:15:17:ac:55:6c"
 d_mac = "ff:ff:ff:ff:ff:ff"
 d_mac1 = "00:00:00:00:00:00"
 sniff_out = 'sniff_data.txt'
+
+### /vars to change
+
 
 f = open(sniff_out,'a+')
 # Convert a string of 6 characters of ethernet address into a dash separated hex string

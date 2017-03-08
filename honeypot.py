@@ -7,6 +7,8 @@ subprocess.Popen(["python", "filemon.py"])
 def server():
 	import sys, os, socket
 
+### vars to change
+
 port_http = 80
 port_smtps = 465
 port_https = 443
@@ -18,6 +20,7 @@ port_http_ns = 8443
 m_from = 'fw2 <root@honeypot.local.lan>'
 m_to = 'Admin <admin@localhost.lan'
 
+### /vars to change
 sock_lst = []
 host = ''
 backlog = 5 # Number of clients on wait.
